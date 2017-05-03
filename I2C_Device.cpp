@@ -110,10 +110,11 @@ unsigned char I2C_Device::Read(unsigned char registerAddress) const
 {
     if (write(_fd, &registerAddress, 1) != 1) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_ERR, errno, I2cReadWrite);
         return ERROR_STATUS;
+#endif
     }
-
     unsigned char buffer;
     
     if (read(_fd, &buffer, 1) != 1)
