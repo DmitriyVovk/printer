@@ -102,8 +102,10 @@ bool I2C_Device::Write(unsigned char registerAddress, const unsigned char* data,
 
     if (write(_fd, &buffer[0], length + 1) != length + 1) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_WARNING, errno, I2cWrite);
         return false;
+#endif
     }
 
     return true;
