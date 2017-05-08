@@ -67,8 +67,10 @@ bool I2C_Device::Write(unsigned char data) const
 {
     if (write(_fd, &data, 1) != 1) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_WARNING, errno, I2cWrite);
         return false;
+#endif
     }
 
     return true;
@@ -81,8 +83,10 @@ bool I2C_Device::Write(unsigned char registerAddress, unsigned char data) const
 
     if (write(_fd, &buffer, 2) != 2) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_WARNING, errno, I2cWrite);
         return false;
+#endif
     }
     
     return true;
