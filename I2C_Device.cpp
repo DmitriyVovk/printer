@@ -114,13 +114,13 @@ bool I2C_Device::Write(unsigned char registerAddress, const unsigned char* data,
 // Read a single byte from the given register
 unsigned char I2C_Device::Read(unsigned char registerAddress) const
 {
-    if (write(_fd, &registerAddress, 1) != 1) 
-    {
-#ifndef _DEBG_
-        Logger::LogError(LOG_ERR, errno, I2cReadWrite);
-        return ERROR_STATUS;
-#endif
-    }
+//    if (write(_fd, &registerAddress, 1) != 1) 
+//    {
+//#ifndef _DEBG_
+//        Logger::LogError(LOG_ERR, errno, I2cReadWrite);
+//        return ERROR_STATUS;
+//#endif
+//    }
     unsigned char buffer;
     
     if (read(_fd, &buffer, 1) != 1)
@@ -140,13 +140,13 @@ unsigned char I2C_Device::Read(unsigned char registerAddress) const
 bool I2C_Device::Read(unsigned char registerAddress, unsigned char* data, 
                      int length) const
 {
-    if (write(_fd, &registerAddress, 1) != 1) 
-    {
-#ifndef _DEBG_
-        Logger::LogError(LOG_ERR, errno, I2cReadWrite);
-        return false;
-#endif
-    }
+//    if (write(_fd, &registerAddress, 1) != 1) 
+//    {
+//#ifndef _DEBG_
+//        Logger::LogError(LOG_ERR, errno, I2cReadWrite);
+//        return false;
+//#endif
+//    }
 
     unsigned char buffer[length];
     
@@ -187,6 +187,7 @@ unsigned char I2C_Device::ReadWhenReady(unsigned char registerAddress,
     unsigned char buffer[2] = {1,2};
     
 #ifdef _DEBG_
+    buffer[0] = readyStatus;
     return buffer[1];
 #endif
     
@@ -211,9 +212,12 @@ unsigned char I2C_Device::ReadWhenReady(unsigned char registerAddress,
 bool I2C_Device::ReadWhenReady(unsigned char registerAddress, 
                                unsigned char* data, int length,
                                unsigned char readyStatus) const
-{
+{   
+    int lengthPlusOne = length + 1;
+    unsigned char buffer[lengthPlusOne];
     
 #ifdef _DEBG_
+    buffer[0] = readyStatus;
     return true;
 #endif
     
@@ -223,8 +227,8 @@ bool I2C_Device::ReadWhenReady(unsigned char registerAddress,
         return false;
     }
 
-    int lengthPlusOne = length + 1;
-    unsigned char buffer[lengthPlusOne];
+    
+    
         
     for(int i = 0; i < MAX_READ_WHEN_READY_ATTEMPTS; i++)
     {
