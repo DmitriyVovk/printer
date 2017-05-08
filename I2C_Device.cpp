@@ -178,11 +178,17 @@ unsigned char I2C_Device::ReadWhenReady(unsigned char registerAddress,
 {
     if (write(_fd, &registerAddress, 1) != 1) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_ERR, errno, I2cReadWrite);
         return ERROR_STATUS;
+#endif
     }
 
-    unsigned char buffer[2];
+    unsigned char buffer[2] = {1,2};
+    
+#ifdef _DEBG_
+    return buffer[1];
+#endif
     
     for(int i = 0; i < MAX_READ_WHEN_READY_ATTEMPTS; i++)
     {
@@ -206,6 +212,11 @@ bool I2C_Device::ReadWhenReady(unsigned char registerAddress,
                                unsigned char* data, int length,
                                unsigned char readyStatus) const
 {
+    
+#ifdef _DEBG_
+    return true;
+#endif
+    
     if (write(_fd, &registerAddress, 1) != 1) 
     {
         Logger::LogError(LOG_ERR, errno, I2cReadWrite);
