@@ -136,15 +136,26 @@ bool I2C_Device::Read(unsigned char registerAddress, unsigned char* data,
 {
     if (write(_fd, &registerAddress, 1) != 1) 
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_ERR, errno, I2cReadWrite);
         return false;
+#endif
     }
 
     unsigned char buffer[length];
+    
+#ifdef _DEBG_
+    for(int i=0; i < length; i++){
+        buffer[i] = i;
+    }
+#endif
+    
     if (read(_fd, buffer, length) != length)
     {
+#ifndef _DEBG_
         Logger::LogError(LOG_ERR, errno, I2cReadRead);
         return false;
+#endif
     }
     
     memcpy(data, buffer, length);

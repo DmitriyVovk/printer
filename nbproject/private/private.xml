@@ -7,16 +7,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/EventHandler.cpp</file>
             <file>file:/F:/NetBeans/ember-firmware-master/C++/I2C_Resource.cpp</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/EventHandler.h</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/Logger.cpp</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/I2C_Device.h</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/ErrorMessage.h</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/Hardware.h</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/main.cpp</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/I_I2C_Device.h</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/FrontPanel.h</file>
             <file>file:/F:/NetBeans/ember-firmware-master/C++/I2C_Device.cpp</file>
-            <file>file:/F:/NetBeans/ember-firmware-master/C++/mock_hardware/NamedPipeI2C_Device.cpp</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/FrontPanel.cpp</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/IResource.h</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/include/EventData.h</file>
+            <file>file:/F:/NetBeans/ember-firmware-master/C++/Projector.cpp</file>
         </group>
     </open-files>
 </project-private>
